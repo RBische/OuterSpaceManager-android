@@ -3,4 +3,6 @@
     <string name="username">Identifiant</string>
     <string name="password">Password</string>
     <string name="btnSubmit">Valider</string>
+    <string name="batiments">Batiments</string>
+    <string name="title_activity_buildings">BuildingsActivity</string>
 </resources>

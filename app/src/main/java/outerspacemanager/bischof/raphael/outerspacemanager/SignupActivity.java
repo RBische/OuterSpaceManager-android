@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         SharedPreferences settings = getSharedPreferences(SHARED_PREFERENCES_FILENAME, 0);
         String currentToken = settings.getString(KEY_TOKEN, null);
-        if (currentToken != null){
+        if (currentToken == null){
             setContentView(R.layout.activity_signup);
             btnSignup = (Button) findViewById(R.id.btnSignup);
             etUsername = (EditText) findViewById(R.id.etUsername);
@@ -63,7 +63,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                         SignupResponse signupResponse = response.body();
                         SharedPreferences preferences = getSharedPreferences(SHARED_PREFERENCES_FILENAME, 0);
                         SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("KEY_TOKEN", signupResponse.getToken());
+                        editor.putString(KEY_TOKEN, signupResponse.getToken());
+                        editor.apply();
                         Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                         startActivity(intent);
                     } else {
